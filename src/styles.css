@@ -1,0 +1,145 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * KGN Mandi House design system.
+ * Palette: deep green, rich maroon, warm gold, cream, dark brown, copper.
+ * Edit colour values in :root below.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-maroon: var(--maroon);
+  --color-green: var(--green);
+  --color-copper: var(--copper);
+  --color-cream: var(--cream);
+  --color-brown: var(--brown);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display: "Marcellus", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --shadow-soft: 0 10px 30px -12px oklch(0.2 0.05 60 / 0.25);
+  --shadow-lift: 0 20px 45px -20px oklch(0.2 0.05 60 / 0.4);
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.98 0.012 90);
+  --foreground: oklch(0.24 0.03 55);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.03 55);
+  --primary: oklch(0.33 0.08 150);
+  --primary-foreground: oklch(0.97 0.02 90);
+  --secondary: oklch(0.35 0.11 20);
+  --secondary-foreground: oklch(0.97 0.02 90);
+  --muted: oklch(0.95 0.015 85);
+  --muted-foreground: oklch(0.48 0.03 60);
+  --accent: oklch(0.78 0.15 80);
+  --accent-foreground: oklch(0.22 0.04 60);
+  --gold: oklch(0.8 0.155 82);
+  --maroon: oklch(0.35 0.11 20);
+  --green: oklch(0.28 0.07 152);
+  --copper: oklch(0.62 0.13 48);
+  --cream: oklch(0.97 0.02 90);
+  --brown: oklch(0.26 0.035 55);
+  --destructive: oklch(0.55 0.2 27);
+  --border: oklch(0.9 0.02 80);
+  --input: oklch(0.9 0.02 80);
+  --ring: oklch(0.8 0.155 82);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+}
+
+@utility surface-dark {
+  background:
+    radial-gradient(120% 90% at 50% 0%, oklch(0.32 0.08 150 / 0.95), transparent 70%),
+    var(--brown);
+  color: var(--cream);
+}
+
+@utility pattern-fade {
+  background-image: radial-gradient(var(--gold) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.08;
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
