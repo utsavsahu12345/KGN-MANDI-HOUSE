@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/',
+  base: '/KGN-MANDI-HOUSE/',
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, './src'),
